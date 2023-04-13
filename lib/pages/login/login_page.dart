@@ -1,11 +1,14 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:proyek_3/common/theme_helper.dart';
+import 'package:proyek_3/pages/homepage/homepage.dart';
+import '../../../lib/common/theme_helper.dart';
 import 'package:hexcolor/hexcolor.dart';
 
+import '../../common/theme_helper.dart';
 import '../forgot_password/forgot_password_page.dart';
 import '../profile/profile.dart';
 import '../registrasi/registration_page.dart';
+import '../widgets/buttomnavbar.dart';
 import '../widgets/header_widget.dart';
 
 class LoginPage extends StatefulWidget {
@@ -131,7 +134,7 @@ class _LoginPageState extends State<LoginPage> {
                                         context,
                                         MaterialPageRoute(
                                             builder: (context) =>
-                                                ProfilePage()));
+                                                BottomNavi()));
                                   },
                                 ),
                               ),

@@ -60,33 +60,37 @@ class _HomePageState extends State<ProfilePage> {
               children: [
                 SizedBox(height: 35),
                 Row(
-                    crossAxisAlignment: CrossAxisAlignment
-                        .start, // tambahkan crossAxisAlignment
-                    children: [
-                      CircleAvatar(
-                        radius: 30,
-                        backgroundImage: _image != null
-                            ? FileImage(_image!)
-                            : AssetImage('assets/images/logo.png')
-                                as ImageProvider<Object>,
-                        backgroundColor: Colors.white,
-                      ),
-                      SizedBox(width: 10),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Users',
-                            style: TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.white),
+                  crossAxisAlignment: CrossAxisAlignment
+                      .center, // Ubah crossAxisAlignment menjadi center
+                  children: [
+                    CircleAvatar(
+                      radius: 30,
+                      backgroundImage: _image != null
+                          ? FileImage(_image!)
+                          : AssetImage('assets/images/logo.png')
+                              as ImageProvider<Object>,
+                      backgroundColor: Colors.white,
+                    ),
+                    SizedBox(width: 20),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment
+                          .center, // Ubah mainAxisAlignment menjadi center
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Users',
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.blueGrey,
                           ),
-                        ],
-                      ),
-                    ]),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
                 SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.0,
+                  height: MediaQuery.of(context).size.height * 0.03,
                 ),
                 Align(
                   alignment: Alignment.centerLeft,
@@ -99,39 +103,53 @@ class _HomePageState extends State<ProfilePage> {
                       )),
                 ),
                 SizedBox(
-                  height: 10,
+                  height: 20,
                 ),
                 Align(
                   alignment: Alignment.centerLeft,
                   child: Padding(
                     padding: const EdgeInsets.only(left: 5.0),
-                    child: Row(
-                      children: [
-                        Icon(Icons.edit),
-                        SizedBox(
-                            width:
-                                5.0), // add some space between the icon and text
-                        Text("Ubah Profil"),
-                      ],
+                    child: InkWell(
+                      onTap: () {
+                        Navigator.pushNamed(context, 'ubahprofile');
+                      },
+                      child: Row(
+                        children: [
+                          Icon(Icons.person, color: Colors.grey),
+                          SizedBox(
+                              width:
+                                  5.0), // add some space between the icon and text
+                          Text(
+                            "Ubah Profil",
+                            style: TextStyle(color: Colors.grey),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
                 SizedBox(
-                  height: 10,
+                  height: 20,
                 ),
                 Align(
                   alignment: Alignment.centerLeft,
                   child: Padding(
                     padding: const EdgeInsets.only(left: 5.0),
-                    child: Row(children: [
-                      Icon(Icons.location_on),
-                      SizedBox(width: 5.0),
-                      Text("Alamat Saya"),
-                    ]),
+                    child: InkWell(
+                      onTap: () {
+                        Navigator.pushNamed(context, 'alamat');
+                      },
+                      child: Row(children: [
+                        Icon(Icons.location_on, color: Colors.grey),
+                        SizedBox(width: 5.0),
+                        Text("Alamat Saya",
+                            style: TextStyle(color: Colors.grey)),
+                      ]),
+                    ),
                   ),
                 ),
                 SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.7,
+                  height: MediaQuery.of(context).size.height * 0.35,
                 ),
                 ElevatedButton(
                   onPressed: () {
@@ -163,7 +181,10 @@ class _HomePageState extends State<ProfilePage> {
                       },
                     );
                   },
-                  child: Text('SIGN OUT'),
+                  child: Text(
+                    'SIGN OUT',
+                    style: TextStyle(color: Colors.white),
+                  ),
                   style: ElevatedButton.styleFrom(
                     textStyle: TextStyle(
                       fontSize: 14,
@@ -173,6 +194,9 @@ class _HomePageState extends State<ProfilePage> {
                     backgroundColor: Color.fromARGB(255, 0, 62, 112),
                   ),
                 ),
+                SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.2,
+                )
               ],
             ),
           ),

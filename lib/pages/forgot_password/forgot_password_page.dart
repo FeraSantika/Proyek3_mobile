@@ -1,8 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:proyek_3/common/theme_helper.dart';
+import '../../../lib/common/theme_helper.dart';
 
+import '../../common/theme_helper.dart';
 import 'forgot_password_verification_page.dart';
 import '../login/login_page.dart';
 import '../widgets/header_widget.dart';

@@ -1,11 +1,15 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
-import 'package:proyek_3/pages/Keranjang/keranjang_page.dart';
+import 'package:proyek_3/pages/halamantoko/halamantoko.dart';
+import '../../../lib/pages/Keranjang/keranjang_page.dart';
 import 'package:proyek_3/pages/widgets/category.dart';
-import 'package:proyek_3/pages/widgets/shop.dart';
+import '../../../lib/pages/widgets/shop.dart';
+import '../widgets/searchbar.dart';
+import '../widgets/shop.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -16,6 +20,12 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int _selectedNavbar = 0;
+
+  List<Widget> imageSliders = [
+    Image.asset('assets/images/homepage.png', fit: BoxFit.fill),
+    Image.asset('assets/images/homepage.png', fit: BoxFit.fill),
+    Image.asset('assets/images/homepage.png', fit: BoxFit.fill),
+  ];
 
   void _OntapNavBar(int index) {
     setState(() {
@@ -82,13 +92,6 @@ class _HomePageState extends State<HomePage> {
                               )
                             ],
                           ),
-                          // Container(
-                          //     alignment: Alignment.topRight,
-                          //     child: Icon(
-                          //       Icons.notifications_active,
-                          //       color: HexColor('#6572EA'),
-                          //       size: 30,
-                          //     )),
                         ],
                       ),
                     ),
@@ -97,23 +100,17 @@ class _HomePageState extends State<HomePage> {
                     ),
                     Padding(
                       padding: const EdgeInsets.all(15),
-                      child: Container(
-                        height: 50,
-                        width: double.infinity,
-                        decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(30)),
-                        child: TextField(
-                          cursorHeight: 20,
-                          autofocus: false,
-                          decoration: InputDecoration(
-                              hintText: "Cari Oleh-oleh Khas Indramayu",
-                              prefixIcon: Icon(Icons.search),
-                              border: OutlineInputBorder(
-                                  borderSide:
-                                      BorderSide(color: Colors.white, width: 2),
-                                  borderRadius: BorderRadius.circular(20))),
-                        ),
+                      child: SearchBar(),
+                    ),
+                    CarouselSlider(
+                      items: imageSliders,
+                      options: CarouselOptions(
+                        height: 140,
+                        autoPlay: true,
+                        aspectRatio: 2.0,
+                        enableInfiniteScroll: true,
+                        enlargeCenterPage: true,
+                        // enlargeStrategy: CenterPageEnlargeStrategy.height,
                       ),
                     ),
                   ],
@@ -123,14 +120,62 @@ class _HomePageState extends State<HomePage> {
             Padding(
               padding: const EdgeInsets.all(15),
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Category(
-                      imagePath: "assets/images/makanan.png", title: "Makanan"),
-                  Category(
-                      imagePath: "assets/images/pakaian.png", title: "Pakaian"),
-                  Category(
-                      imagePath: "assets/images/kerajinan.png",
-                      title: "Kerajinan"),
+                  Column(
+                    children: [
+                      CircleAvatar(
+                        radius: 30,
+                        backgroundColor: Colors.grey[200],
+                        child: Image.asset(
+                          "assets/images/mangga.jpeg",
+                          width: 30,
+                          height: 30,
+                        ),
+                      ),
+                      SizedBox(height: 5),
+                      Text(
+                        "Makanan",
+                        style: TextStyle(fontSize: 12),
+                      ),
+                    ],
+                  ),
+                  Column(
+                    children: [
+                      CircleAvatar(
+                        radius: 30,
+                        backgroundColor: Colors.grey[200],
+                        child: Image.asset(
+                          "assets/images/baju.jpeg",
+                          width: 30,
+                          height: 30,
+                        ),
+                      ),
+                      SizedBox(height: 5),
+                      Text(
+                        "Pakaian",
+                        style: TextStyle(fontSize: 12),
+                      ),
+                    ],
+                  ),
+                  Column(
+                    children: [
+                      CircleAvatar(
+                        radius: 30,
+                        backgroundColor: Colors.grey[200],
+                        child: Image.asset(
+                          "assets/images/keripik.jpeg",
+                          width: 30,
+                          height: 30,
+                        ),
+                      ),
+                      SizedBox(height: 5),
+                      Text(
+                        "Kerajinan",
+                        style: TextStyle(fontSize: 12),
+                      ),
+                    ],
+                  ),
                 ],
               ),
             ),
@@ -142,23 +187,50 @@ class _HomePageState extends State<HomePage> {
                     fontSize: 18, fontWeight: FontWeight.bold),
               ),
             ),
-            Shop(
-              imagePath: "assets/images/mangga.png",
-              nameShop: "Mangga Hj.Sukini",
-              alamat: "Jarak",
-              lihatLainnya: "Lihat Lainnya >",
+            InkWell(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => Halamantoko(),
+                  ),
+                );
+              },
+              child: Shop(
+                imagePath: "assets/images/mangga.png",
+                nameShop: "Mangga Hj.Sukini",
+                alamat: "Jarak",
+              ),
             ),
-            Shop(
-              imagePath: "assets/images/batik.png",
-              nameShop: "Rumah Batik",
-              alamat: "Jarak",
-              lihatLainnya: "Lihat Lainnya >",
+            InkWell(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => Halamantoko(),
+                  ),
+                );
+              },
+              child: Shop(
+                imagePath: "assets/images/batik.png",
+                nameShop: "Rumah Batik",
+                alamat: "Jarak",
+              ),
             ),
-            Shop(
-              imagePath: "assets/images/kerupuk.png",
-              nameShop: "Sentra Kerupuk",
-              alamat: "Jarak",
-              lihatLainnya: "Lihat Lainnya >",
+            InkWell(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => Halamantoko(),
+                  ),
+                );
+              },
+              child: Shop(
+                imagePath: "assets/images/kerupuk.png",
+                nameShop: "Sentra Kerupuk",
+                alamat: "Jarak",
+              ),
             ),
           ],
         )),

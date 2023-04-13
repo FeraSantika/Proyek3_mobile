@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
-import 'package:proyek_3/pages/Keranjang/keranjang_page.dart';
-import 'package:proyek_3/pages/homepage/homepage.dart';
-import 'package:proyek_3/pages/profile/ubahprofile.dart';
-import 'package:proyek_3/pages/profile/profile.dart';
+import '../Keranjang/keranjang_page.dart';
+import '../homepage/homepage.dart';
+import '../profile/ubahprofile.dart';
+import '../profile/profile.dart';
+import '../Keranjang/keranjang_page.dart';
+import '../profile/profile.dart';
+import '../homepage/homepage.dart';
 
 class BottomNavi extends StatefulWidget {
   const BottomNavi({super.key});
@@ -14,7 +17,11 @@ class BottomNavi extends StatefulWidget {
 
 class _BottomNaviState extends State<BottomNavi> {
   int currentIndex = 0;
-  final List<Widget> body = [ProfilePage(), HomePage(), KeranjangPage()];
+  final List<Widget> body = [
+    HomePage(),
+    KeranjangPage(),
+    ProfilePage(),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -22,12 +29,6 @@ class _BottomNaviState extends State<BottomNavi> {
       body: body[currentIndex],
       bottomNavigationBar:
           BottomNavigationBar(onTap: ontap, currentIndex: currentIndex, items: [
-        BottomNavigationBarItem(
-            icon: Icon(
-              Icons.person,
-              color: HexColor('#6572EA'),
-            ),
-            label: "Profil"),
         BottomNavigationBarItem(
             icon: Icon(
               Icons.home,
@@ -41,6 +42,12 @@ class _BottomNaviState extends State<BottomNavi> {
           ),
           label: "Keranjang",
         ),
+        BottomNavigationBarItem(
+            icon: Icon(
+              Icons.person,
+              color: HexColor('#6572EA'),
+            ),
+            label: "Profil"),
       ]),
     );
   }

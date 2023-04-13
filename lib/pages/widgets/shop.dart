@@ -1,19 +1,18 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:proyek_3/pages/registrasi/registration_page.dart';
+import 'package:proyek_3/pages/halamantoko/halamantoko.dart';
+import '../../../pages/registrasi/registration_page.dart';
 
 class Shop extends StatelessWidget {
   final String imagePath;
   final String nameShop;
   final String alamat;
-  final String lihatLainnya;
   const Shop({
     Key? key,
     required this.imagePath,
     required this.nameShop,
     required this.alamat,
-    required this.lihatLainnya,
   }) : super(key: key);
 
   @override
@@ -62,22 +61,10 @@ class Shop extends StatelessWidget {
                             Text(alamat,
                                 style: GoogleFonts.montserrat(fontSize: 12)),
                             SizedBox(
-                              width: 170,
-                            ),
-                            GestureDetector(
-                              onTap: () {
-                                Navigator.pushNamed(context, 'halaman_lain');
-                              },
-                              child: Text(
-                                lihatLainnya,
-                                style: GoogleFonts.montserrat(
-                                  fontSize: 12,
-                                  color: Colors.blue,
-                                ),
-                              ),
+                              width: 140,
                             ),
                           ],
-                        )
+                        ),
                       ],
                     ),
                   ),

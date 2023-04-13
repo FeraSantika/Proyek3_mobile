@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:proyek_3/common/theme_helper.dart';
+import '../../../lib/common/theme_helper.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:intl/intl.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
+import '../../common/theme_helper.dart';
 import '../profile/profile.dart';
 
 class RegistrationPage extends StatefulWidget {
